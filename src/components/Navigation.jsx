@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SafeIcon from '../common/SafeIcon';
 import * as FiIcons from 'react-icons/fi';
 
-const { FiMenu, FiX, FiBarChart3, FiTool, FiUsers } = FiIcons;
+const { FiMenu, FiX, FiBarChart3, FiTool, FiUsers, FiCpu, FiZap } = FiIcons;
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  
+
   const navItems = [
     { name: 'About', href: '#about', external: false },
     { name: 'Services', href: '#services', external: false },
     { name: 'Tools', href: '#tools', external: false, icon: FiTool },
+    { name: 'Predictive Platform', href: '/predictive-platform', external: true, icon: FiCpu },
+    { name: 'NEON Framework', href: '/neon-framework', external: true, icon: FiZap },
     { name: 'Testimonials', href: '/testimonials', external: true, icon: FiUsers },
     { name: 'Contact', href: '#contact', external: false },
     { name: 'Analytics', href: '/analytics', external: true, icon: FiBarChart3 }
@@ -32,10 +34,14 @@ const Navigation = () => {
   const handleNavClick = (e, item) => {
     e.preventDefault();
     setIsOpen(false);
-    
+
     if (item.external) {
       // Handle routing to different pages
       navigate(item.href);
+      // Scroll to top after navigation
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
     } else {
       // Handle section scrolling within the same page
       if (location.pathname !== '/') {
@@ -58,7 +64,16 @@ const Navigation = () => {
     e.preventDefault();
     navigate('/');
     setIsOpen(false);
+    // Scroll to top when clicking logo
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
   };
+
+  // Scroll to top when route changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <motion.nav
