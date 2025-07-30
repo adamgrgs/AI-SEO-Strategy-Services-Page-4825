@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, {useState} from 'react';
+import {motion} from 'framer-motion';
 import SafeIcon from '../common/SafeIcon';
 import * as FiIcons from 'react-icons/fi';
 
-const { FiMail, FiSend, FiCheck, FiArrowRight, FiLoader } = FiIcons;
+const {FiMail, FiSend, FiCheck, FiArrowRight, FiLoader} = FiIcons;
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,10 +16,7 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({...formData, [e.target.name]: e.target.value});
   };
 
   const handleSubmit = async (e) => {
@@ -64,26 +61,13 @@ const Contact = () => {
   };
 
   const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
+    hidden: {opacity: 0},
+    visible: {opacity: 1, transition: {staggerChildren: 0.2}}
   };
 
   const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 12
-      }
-    }
+    hidden: {y: 50, opacity: 0},
+    visible: {y: 0, opacity: 1, transition: {type: "spring", stiffness: 100, damping: 12}}
   };
 
   const benefits = [
@@ -100,10 +84,10 @@ const Contact = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{once: true, amount: 0.3}}
           className="text-center mb-16"
         >
-          <motion.h2 
+          <motion.h2
             variants={itemVariants}
             className="text-4xl md:text-5xl font-bold text-white mb-6"
           >
@@ -112,12 +96,11 @@ const Contact = () => {
               AI Search?
             </span>
           </motion.h2>
-          <motion.p 
+          <motion.p
             variants={itemVariants}
             className="text-xl text-slate-300 max-w-3xl mx-auto"
           >
-            Let's discuss how AI-driven SEO can transform your search visibility and drive revenue growth 
-            across Google, ChatGPT, and the entire ecosystem of intelligent platforms.
+            Let's discuss how AI-driven SEO can transform your search visibility and drive revenue growth across Google, ChatGPT, and the entire ecosystem of intelligent platforms.
           </motion.p>
         </motion.div>
 
@@ -127,22 +110,21 @@ const Contact = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{once: true, amount: 0.3}}
             className="bg-slate-900/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8"
           >
             <motion.div variants={itemVariants} className="mb-8">
               <h3 className="text-2xl font-bold text-white mb-4">Get Your Free Consultation</h3>
               <p className="text-slate-300">
-                Send me a message and I'll get back to you within 24 hours with insights 
-                tailored to your business.
+                Send me a message and I'll get back to you within 24 hours with insights tailored to your business.
               </p>
             </motion.div>
 
             {/* Success Message */}
             {submitStatus === 'success' && (
               <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{opacity: 0, y: -20}}
+                animate={{opacity: 1, y: 0}}
                 className="mb-6 p-4 bg-green-500/20 border border-green-500/30 rounded-lg"
               >
                 <div className="flex items-center gap-3">
@@ -158,8 +140,8 @@ const Contact = () => {
             {/* Error Message */}
             {submitStatus === 'error' && (
               <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{opacity: 0, y: -20}}
+                animate={{opacity: 1, y: 0}}
                 className="mb-6 p-4 bg-red-500/20 border border-red-500/30 rounded-lg"
               >
                 <div className="flex items-center gap-3">
@@ -172,9 +154,9 @@ const Contact = () => {
               </motion.div>
             )}
 
-            <motion.form 
-              variants={itemVariants} 
-              onSubmit={handleSubmit} 
+            <motion.form
+              variants={itemVariants}
+              onSubmit={handleSubmit}
               className="space-y-6"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -244,8 +226,8 @@ const Contact = () => {
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                whileHover={!isSubmitting ? { scale: 1.02 } : {}}
-                whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                whileHover={!isSubmitting ? {scale: 1.02} : {}}
+                whileTap={!isSubmitting ? {scale: 0.98} : {}}
                 className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-3 shadow-xl hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 {isSubmitting ? (
@@ -268,7 +250,7 @@ const Contact = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{once: true, amount: 0.3}}
             className="space-y-8"
           >
             <motion.div variants={itemVariants}>
@@ -277,10 +259,10 @@ const Contact = () => {
                 {benefits.map((benefit, index) => (
                   <motion.div
                     key={index}
-                    initial={{ x: -20, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
+                    initial={{x: -20, opacity: 0}}
+                    whileInView={{x: 0, opacity: 1}}
+                    viewport={{once: true}}
+                    transition={{delay: index * 0.1}}
                     className="flex items-start gap-3"
                   >
                     <SafeIcon icon={FiCheck} className="text-green-400 text-lg mt-1 flex-shrink-0" />
@@ -290,7 +272,7 @@ const Contact = () => {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               variants={itemVariants}
               className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700"
             >
@@ -303,26 +285,24 @@ const Contact = () => {
                   <p className="text-slate-400 text-sm">Prefer email? Reach out directly</p>
                 </div>
               </div>
-              
               <motion.a
-                href="mailto:adam@rankandbeyond.com"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                href="mailto:howdy@rankandbeyond.com"
+                whileHover={{scale: 1.02}}
+                whileTap={{scale: 0.98}}
                 className="group w-full bg-slate-700 hover:bg-slate-600 text-white px-6 py-4 rounded-lg font-medium transition-all duration-300 flex items-center justify-between"
               >
-                <span>adam@rankandbeyond.com</span>
+                <span>howdy@rankandbeyond.com</span>
                 <SafeIcon icon={FiArrowRight} className="group-hover:translate-x-1 transition-transform duration-200" />
               </motion.a>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               variants={itemVariants}
               className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl p-6 border border-blue-500/20"
             >
               <h4 className="text-white font-semibold mb-3">💡 Quick Tip</h4>
               <p className="text-slate-300 text-sm">
-                Include your current website URL and main competitors in your message. 
-                This helps me provide more specific insights during our initial consultation.
+                Include your current website URL and main competitors in your message. This helps me provide more specific insights during our initial consultation.
               </p>
             </motion.div>
           </motion.div>

@@ -99,6 +99,14 @@ const Services = () => {
     }
   };
 
+  const scrollToSection = (e, sectionId) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId.replace('#', ''));
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/30">
       <div className="max-w-7xl mx-auto">
@@ -109,7 +117,7 @@ const Services = () => {
           viewport={{ once: true, amount: 0.3 }}
           className="text-center mb-16"
         >
-          <motion.h2 
+          <motion.h2
             variants={itemVariants}
             className="text-4xl md:text-5xl font-bold text-white mb-6"
           >
@@ -118,12 +126,11 @@ const Services = () => {
               SEO Ecosystem
             </span>
           </motion.h2>
-          <motion.p 
+          <motion.p
             variants={itemVariants}
             className="text-xl text-slate-300 max-w-3xl mx-auto"
           >
-            From foundational SEO to cutting-edge LLM optimization, I provide end-to-end solutions 
-            that drive measurable results across all search platforms.
+            From foundational SEO to cutting-edge LLM optimization, I provide end-to-end solutions that drive measurable results across all search platforms.
           </motion.p>
         </motion.div>
 
@@ -143,7 +150,7 @@ const Services = () => {
               <motion.div
                 className="p-6 cursor-pointer"
                 onClick={() => setExpandedService(expandedService === index ? -1 : index)}
-                whileHover={{ backgroundColor: "rgba(51, 65, 85, 0.3)" }}
+                whileHover={{ backgroundColor: "rgba(51,65,85,0.3)" }}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
@@ -205,6 +212,7 @@ const Services = () => {
         >
           <motion.a
             href="#contact"
+            onClick={(e) => scrollToSection(e, '#contact')}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl"

@@ -1,8 +1,6 @@
 import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import SalesPage from './pages/SalesPage';
-import TestimonialsPage from './pages/TestimonialsPage';
-import AnalyticsDashboard from './components/AnalyticsDashboard';
 import './App.css';
 
 function App() {
@@ -10,8 +8,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<SalesPage />} />
-        <Route path="/testimonials" element={<TestimonialsPage />} />
-        <Route path="/analytics" element={<AnalyticsDashboard />} />
+        <Route path="*" element={<SalesPage />} />
       </Routes>
     </Router>
   );
